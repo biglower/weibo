@@ -14,6 +14,7 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        \Illuminate\Pagination\Paginator::useBootstrap();
     }
 
     /**
