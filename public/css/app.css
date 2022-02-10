@@ -11349,3 +11349,8 @@ section.user_info h1, section.user_info .h1 {
   float: none;
   max-width: 100px;
 }
+
+/* Users index */
+.float-right {
+  float: right;
+}
