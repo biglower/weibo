@@ -11290,6 +11290,10 @@ nav.navbar.navbar-expand-lg {
   margin-bottom: 20px;
 }
 
+.form-group {
+  margin-bottom: 12px;
+}
+
 /* footer */
 footer {
   margin-top: 45px;
