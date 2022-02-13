@@ -14,6 +14,10 @@ class UsersController extends Controller
         $this->middleware('auth', [
             'except' => ['show', 'create', 'store', 'index', 'confirmEmail']
         ]);
+
+        $this->middleware('throttle:10,60', [
+            'only' => ['store']
+        ]);
     }
 
     public function create()
@@ -61,7 +65,7 @@ class UsersController extends Controller
 
         $data = [];
         $data['name'] = $request->name;
-        if($request->password) {
+        if ($request->password) {
             $data['password'] = bcrypt($request->password);
         }
         $user->update($data);
@@ -94,7 +98,7 @@ class UsersController extends Controller
         $to = $user->email;
         $subject = "感谢注册 Weibo 应用！请确认你的邮箱。";
 
-        Mail::send($view, $data, function($message) use ($from, $name, $to, $subject) {
+        Mail::send($view, $data, function ($message) use ($from, $name, $to, $subject) {
             $message->from($from, $name)->to($to)->subject($subject);
         });
     }
